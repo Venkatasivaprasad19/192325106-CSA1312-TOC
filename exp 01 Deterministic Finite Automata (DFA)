@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+int isAcceptedByDFA(const char *input) {
+    int length = strlen(input);
+
+    // Reject if the string is empty
+    if (length == 0) {
+        return 0;
+    }
+
+    // Check if it starts and ends with 'a'
+    if (input[0] == 'a' && input[length - 1] == 'a') {
+        return 1; // Accepted
+    }
+
+    return 0; // Rejected
+}
+
+int main() {
+    char input[100];
+
+    printf("Enter a string (only a's and b's): ");
+    scanf("%s", input);
+
+    // Validate input (ensure only 'a' and 'b' are used)
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (input[i] != 'a' && input[i] != 'b') {
+            printf("Invalid input. Use only 'a' and 'b'.\n");
+            return 1;
+        }
+    }
+
+    if (isAcceptedByDFA(input)) {
+        printf("String is accepted by the DFA.\n");
+    } else {
+        printf("String is rejected by the DFA.\n");
+    }
+
+    return 0;
+}
